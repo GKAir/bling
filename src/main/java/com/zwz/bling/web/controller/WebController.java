@@ -3,10 +3,8 @@ package com.zwz.bling.web.controller;
 import com.zwz.bling.web.model.Account;
 import com.zwz.bling.web.service.WebService;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -30,9 +28,20 @@ public class WebController {
     @RequestMapping("selectAll")
     @ResponseBody
     public List<Account> selectAll() {
-        System.out.println("selectAll");
-        List<Account> list = webService.selectAll();
-        System.out.println(list.size());
-        return list;
+        return webService.selectAll();
+    }
+
+    @RequestMapping("edit")
+    @ResponseBody
+    public int edit(Account account) {
+       // return webService.edit(account);
+        System.out.println("sfdsfsdfsf");
+        return 1;
+    }
+
+    @RequestMapping("add")
+    @ResponseBody
+    public int add(Account account) {
+        return webService.add(account);
     }
 }

@@ -19,7 +19,7 @@
     <result column="renren" property="renren" jdbcType="CHAR" />
     <result column="idcard" property="idcard" jdbcType="CHAR" />
     <result column="remark" property="remark" jdbcType="VARCHAR" />
-    <result column="reg_time" property="regTime" jdbcType="TIMESTAMP" />
+    <result column="reg_time" property="regTime" jdbcType="VARCHAR" />
     <result column="state" property="state" jdbcType="CHAR" />
     <result column="need" property="need" jdbcType="VARCHAR" />
   </resultMap>
@@ -126,7 +126,7 @@
       #{account,jdbcType=VARCHAR}, #{uname,jdbcType=VARCHAR}, #{upwd,jdbcType=VARCHAR}, 
       #{email,jdbcType=VARCHAR}, #{fzemail,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, 
       #{type,jdbcType=INTEGER}, #{qq,jdbcType=CHAR}, #{wechat,jdbcType=CHAR}, #{weibo,jdbcType=CHAR}, 
-      #{renren,jdbcType=CHAR}, #{idcard,jdbcType=CHAR}, #{remark,jdbcType=VARCHAR}, #{regTime,jdbcType=TIMESTAMP}, 
+      #{renren,jdbcType=CHAR}, #{idcard,jdbcType=CHAR}, #{remark,jdbcType=VARCHAR}, #{regTime,jdbcType=VARCHAR}, 
       #{state,jdbcType=CHAR}, #{need,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.zwz.bling.web.model.Account" >
@@ -246,7 +246,7 @@
         #{remark,jdbcType=VARCHAR},
       </if>
       <if test="regTime != null" >
-        #{regTime,jdbcType=TIMESTAMP},
+        #{regTime,jdbcType=VARCHAR},
       </if>
       <if test="state != null" >
         #{state,jdbcType=CHAR},
@@ -317,7 +317,7 @@
         remark = #{record.remark,jdbcType=VARCHAR},
       </if>
       <if test="record.regTime != null" >
-        reg_time = #{record.regTime,jdbcType=TIMESTAMP},
+        reg_time = #{record.regTime,jdbcType=VARCHAR},
       </if>
       <if test="record.state != null" >
         state = #{record.state,jdbcType=CHAR},
@@ -349,7 +349,7 @@
       renren = #{record.renren,jdbcType=CHAR},
       idcard = #{record.idcard,jdbcType=CHAR},
       remark = #{record.remark,jdbcType=VARCHAR},
-      reg_time = #{record.regTime,jdbcType=TIMESTAMP},
+      reg_time = #{record.regTime,jdbcType=VARCHAR},
       state = #{record.state,jdbcType=CHAR},
       need = #{record.need,jdbcType=VARCHAR}
     <if test="_parameter != null" >
@@ -408,7 +408,7 @@
         remark = #{remark,jdbcType=VARCHAR},
       </if>
       <if test="regTime != null" >
-        reg_time = #{regTime,jdbcType=TIMESTAMP},
+        reg_time = #{regTime,jdbcType=VARCHAR},
       </if>
       <if test="state != null" >
         state = #{state,jdbcType=CHAR},
@@ -437,7 +437,7 @@
       renren = #{renren,jdbcType=CHAR},
       idcard = #{idcard,jdbcType=CHAR},
       remark = #{remark,jdbcType=VARCHAR},
-      reg_time = #{regTime,jdbcType=TIMESTAMP},
+      reg_time = #{regTime,jdbcType=VARCHAR},
       state = #{state,jdbcType=CHAR},
       need = #{need,jdbcType=VARCHAR}
     where Id = #{id,jdbcType=INTEGER}

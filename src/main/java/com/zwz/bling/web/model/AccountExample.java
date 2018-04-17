@@ -1,7 +1,6 @@
 package com.zwz.bling.web.model;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class AccountExample {
@@ -1285,52 +1284,52 @@ public class AccountExample {
             return (Criteria) this;
         }
 
-        public Criteria andRegTimeEqualTo(Date value) {
+        public Criteria andRegTimeEqualTo(String value) {
             addCriterion("reg_time =", value, "regTime");
             return (Criteria) this;
         }
 
-        public Criteria andRegTimeNotEqualTo(Date value) {
+        public Criteria andRegTimeNotEqualTo(String value) {
             addCriterion("reg_time <>", value, "regTime");
             return (Criteria) this;
         }
 
-        public Criteria andRegTimeGreaterThan(Date value) {
+        public Criteria andRegTimeGreaterThan(String value) {
             addCriterion("reg_time >", value, "regTime");
             return (Criteria) this;
         }
 
-        public Criteria andRegTimeGreaterThanOrEqualTo(Date value) {
+        public Criteria andRegTimeGreaterThanOrEqualTo(String value) {
             addCriterion("reg_time >=", value, "regTime");
             return (Criteria) this;
         }
 
-        public Criteria andRegTimeLessThan(Date value) {
+        public Criteria andRegTimeLessThan(String value) {
             addCriterion("reg_time <", value, "regTime");
             return (Criteria) this;
         }
 
-        public Criteria andRegTimeLessThanOrEqualTo(Date value) {
+        public Criteria andRegTimeLessThanOrEqualTo(String value) {
             addCriterion("reg_time <=", value, "regTime");
             return (Criteria) this;
         }
 
-        public Criteria andRegTimeIn(List<Date> values) {
+        public Criteria andRegTimeIn(List<String> values) {
             addCriterion("reg_time in", values, "regTime");
             return (Criteria) this;
         }
 
-        public Criteria andRegTimeNotIn(List<Date> values) {
+        public Criteria andRegTimeNotIn(List<String> values) {
             addCriterion("reg_time not in", values, "regTime");
             return (Criteria) this;
         }
 
-        public Criteria andRegTimeBetween(Date value1, Date value2) {
+        public Criteria andRegTimeBetween(String value1, String value2) {
             addCriterion("reg_time between", value1, value2, "regTime");
             return (Criteria) this;
         }
 
-        public Criteria andRegTimeNotBetween(Date value1, Date value2) {
+        public Criteria andRegTimeNotBetween(String value1, String value2) {
             addCriterion("reg_time not between", value1, value2, "regTime");
             return (Criteria) this;
         }

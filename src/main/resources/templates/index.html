@@ -7,14 +7,25 @@
     <script type="text/javascript" src="bootstrap/bootstrap.min.js"></script>
     <script type="text/javascript" src="bt/bootstrap-table.js"></script>
     <script type="text/javascript" src="bt/locale/bootstrap-table-zh-CN.js"></script>
+    <script src="x-editable/bootstrap-editable.min.js"></script>
+    <script src="bt/bootstrap-table-editable.js"></script>
 
-    <link href="bt/bootstrap-table.css" rel="stylesheet">
     <link href="bootstrap/bootstrap.min.css" rel="stylesheet">
+    <link href="bt/bootstrap-table.css" rel="stylesheet">
+    <link href="x-editable/bootstrap-editable.css" rel="stylesheet"/>
 </head>
 <body>
 <!--<p th:text="'id: ' + ${aaa}"></p>
 <p th:text="'content: ' + ${bbb}"></p>-->
-<table id="bootstrapTable"></table>
+<div id="toolbar" class="btn-group">
+    <button id="add" class="btn btn-default" title="添加">
+        <i class="glyphicon glyphicon-plus"></i> 添加
+    </button>
+    <button id="del" class="btn btn-default" title="删除">
+        <i class="glyphicon glyphicon-minus"></i> 删除
+    </button>
+</div>
+<table id="bootstrapTable" data-toolbar="#toolbar"></table>
 
 <script type='text/javascript'>
     $(function () {
@@ -23,6 +34,213 @@
                 oTable.Init();*/
 
         $('#bootstrapTable').bootstrapTable({
+            columns: [
+                {
+                    checkbox: true
+                },
+                {
+                    field: 'id',
+                    title: 'ID'
+                }, {
+                    field: 'name',
+                    title: '名字',
+                    editable: {
+                        type: 'text',
+                        title: '用户名',
+                        validate: function (v) {
+                            if (!v) return '用户名不能为空';
+                        }
+                    }
+                }, {
+                    field: 'app',
+                    title: 'app',
+                    editable: {
+                        type: 'text',
+                        title: '用户名',
+                        validate: function (v) {
+                            if (!v) return '用户名不能为空';
+                        }
+                    }
+                }, {
+                    field: 'url',
+                    title: '地址',
+                    editable: {
+                        type: 'text',
+                        title: '用户名',
+                        validate: function (v) {
+                            if (!v) return '用户名不能为空';
+                        }
+                    }
+                }, {
+                    field: 'account',
+                    title: '账号',
+                    editable: {
+                        type: 'text',
+                        title: '用户名',
+                        validate: function (v) {
+                            if (!v) return '用户名不能为空';
+                        }
+                    }
+                }, {
+                    field: 'uname',
+                    title: 'uname',
+                    editable: {
+                        type: 'text',
+                        title: '用户名',
+                        validate: function (v) {
+                            if (!v) return '用户名不能为空';
+                        }
+                    }
+                }, {
+                    field: 'upwd',
+                    title: 'upwd',
+                    editable: {
+                        type: 'text',
+                        title: '用户名',
+                        validate: function (v) {
+                            if (!v) return '用户名不能为空';
+                        }
+                    }
+                }, {
+                    field: 'email',
+                    title: '邮箱',
+                    editable: {
+                        type: 'text',
+                        title: '用户名',
+                        validate: function (v) {
+                            if (!v) return '用户名不能为空';
+                        }
+                    }
+                }, {
+                    field: 'fzemail',
+                    title: 'fzemail',
+                    editable: {
+                        type: 'text',
+                        title: '用户名',
+                        validate: function (v) {
+                            if (!v) return '用户名不能为空';
+                        }
+                    }
+                }, {
+                    field: 'phone',
+                    title: '手机',
+                    editable: {
+                        type: 'text',
+                        title: '用户名',
+                        validate: function (v) {
+                            if (!v) return '用户名不能为空';
+                        }
+                    }
+                }, {
+                    field: 'type',
+                    title: 'type',
+                    editable: {
+                        type: 'text',
+                        title: '用户名',
+                        validate: function (v) {
+                            if (!v) return '用户名不能为空';
+                        }
+                    }
+                }, {
+                    field: 'qq',
+                    title: 'qq',
+                    editable: {
+                        type: 'text',
+                        title: '用户名',
+                        validate: function (v) {
+                            if (!v) return '用户名不能为空';
+                        }
+                    }
+                }, {
+                    field: 'wechat',
+                    title: 'wechat',
+                    editable: {
+                        type: 'text',
+                        title: '用户名',
+                        validate: function (v) {
+                            if (!v) return '用户名不能为空';
+                        }
+                    }
+                }, {
+                    field: 'weibo',
+                    title: 'weibo',
+                    editable: {
+                        type: 'text',
+                        title: '用户名',
+                        validate: function (v) {
+                            if (!v) return '用户名不能为空';
+                        }
+                    }
+                }, {
+                    field: 'renren',
+                    title: '人人',
+                    editable: {
+                        type: 'text',
+                        title: '用户名',
+                        validate: function (v) {
+                            if (!v) return '用户名不能为空';
+                        }
+                    }
+                }, {
+                    field: 'idcard',
+                    title: 'idcard',
+                    editable: {
+                        type: 'text',
+                        title: '用户名',
+                        validate: function (v) {
+                            if (!v) return '用户名不能为空';
+                        }
+                    }
+                }, {
+                    field: 'remark',
+                    title: 'remark',
+                    editable: {
+                        type: 'text',
+                        title: '用户名',
+                        validate: function (v) {
+                            if (!v) return '用户名不能为空';
+                        }
+                    }
+                }/*, {
+                    field: 'regTime',
+                    title: '注册时间'
+                }*/, {
+                    field: 'state',
+                    title: 'state',
+                    editable: {
+                        type: 'text',
+                        title: '用户名',
+                        validate: function (v) {
+                            if (!v) return '用户名不能为空';
+                        }
+                    }
+                }, {
+                    field: 'need',
+                    title: 'need',
+                    editable: {
+                        type: 'text',
+                        title: '用户名',
+                        validate: function (v) {
+                            if (!v) return '用户名不能为空';
+                        }
+                    }
+                }, {
+                    field: 'wechat',
+                    title: 'wechat',
+                    editable: {
+                        type: 'text',
+                        title: '用户名',
+                        validate: function (v) {
+                            if (!v) return '用户名不能为空';
+                        }
+                    }
+                },
+                {
+                    field: 'operate',
+                    title: '操作',
+                    formatter: operateFormatter //自定义方法，添加操作按钮
+                }
+            ],
             url: '/selectAll',         //请求后台的URL（*）
             method: 'get',                      //请求方式（*）
             toolbar: '#toolbar',                //工具按钮用哪个容器
@@ -48,10 +266,19 @@
             showToggle: true,                    //是否显示详细视图和列表视图的切换按钮
             cardView: false,                    //是否显示详细视图
             detailView: false,                   //是否显示父子表
+            onDblClickRow: function (row) {
+                console.log("click:" + row.id);
+                let r = confirm("确定删除吗？");
+                if (r === true) {
+                    alert(row.id)
+                } else {
+
+                }
+            },
             onEditableSave: function (field, row, oldValue, $el) {
-                $.ajax({
+                /*$.ajax({
                     success: function (data, status) {
-                        if (status == "success") {
+                        if (status === "success") {
                             alert("编辑成功");
                         }
                     },
@@ -61,79 +288,27 @@
                     complete: function () {
 
                     }
-                });
+                });*/
+                console.log(row);
+                console.log(row.regTime);
+                /*$.ajax({
+                    type: "post",
+                    url: "edit",
+                    data: row,
+                    success: function (data, status) {
+                        if (status === "success") {
+                            alert('提交数据成功');
+                        }
+                    },
+                    error: function () {
+                        alert('编辑失败');
+                    },
+                    complete: function () {
+
+                    }
+
+                });*/
             },
-            columns: [
-                {
-                    field: 'id',
-                    title: 'ID'
-                }, {
-                    field: 'name',
-                    title: '名字'
-                }, {
-                    field: 'app',
-                    title: 'app'
-                }, {
-                    field: 'url',
-                    title: '地址'
-                }, {
-                    field: 'account',
-                    title: '账号'
-                }, {
-                    field: 'uname',
-                    title: 'uname'
-                }, {
-                    field: 'upwd',
-                    title: 'upwd'
-                }, {
-                    field: 'email',
-                    title: '邮箱'
-                }, {
-                    field: 'fzemail',
-                    title: 'fzemail'
-                }, {
-                    field: 'phone',
-                    title: '手机'
-                }, {
-                    field: 'type',
-                    title: 'type'
-                }, {
-                    field: 'qq',
-                    title: 'qq'
-                }, {
-                    field: 'wechat',
-                    title: 'wechat'
-                }, {
-                    field: 'weibo',
-                    title: 'weibo'
-                }, {
-                    field: 'renren',
-                    title: '人人'
-                }, {
-                    field: 'idcard',
-                    title: 'idcard'
-                }, {
-                    field: 'remark',
-                    title: 'remark'
-                }, {
-                    field: 'regTime',
-                    title: '注册时间'
-                }, {
-                    field: 'state',
-                    title: 'state'
-                }, {
-                    field: 'need',
-                    title: 'need'
-                }, {
-                    field: 'wechat',
-                    title: 'wechat'
-                },
-                {
-                    field: 'operate',
-                    title: '操作',
-                    formatter: operateFormatter //自定义方法，添加操作按钮
-                }
-            ],
             rowStyle: function (row, index) {
                 var classesArr = ['success', 'info'];
                 var strclass = "";
@@ -148,6 +323,34 @@
     });
 
 
+    var $add = $('#add');
+    var $remove = $('#del');
+    $remove.click(function () {
+        var ids = $.map($('#bootstrapTable').bootstrapTable('getSelections'), function (row) {
+            return row.id;
+        });
+        if (ids.length !== 1) {
+            alert("请选择一行删除!");
+            return;
+        }
+        $('#bootstrapTable').bootstrapTable('remove', {
+            field: 'id',
+            values: ids
+        });
+    });
+
+    $add.click(function () {
+        var index = $('#bootstrapTable').bootstrapTable('getData').length;
+        $('#bootstrapTable').bootstrapTable('insertRow', {
+            index: 0,
+            row: {
+                id: 'id',
+                name: '2333'
+            }
+        });
+    });
+
+
     function queryParams(params) {
         var temp = {   //这里的键的名字和控制器的变量名必须一直，这边改动，控制器也需要改成一样的
             limit: params.limit,   //页面大小
@@ -157,14 +360,22 @@
     };
 
     function operateFormatter(value, row, index) {//赋予的参数
+        var row = row;
         return [
-            '<a class="btn active disabled" onclick="updateLine()">编辑</a>',
-            '<a class="btn active" href="#">档案</a>',
+            '<a class="btn active" id="edit" onclick="updateLine()">编辑</a>',
+            '<a class="btn active" id="delete" onclick="deleteLine()">删除</a>',
         ].join('');
     }
 
     function updateLine() {
+        //var index = t.getAttribute("data-index");
+        console.log(document.getElementById("edit").parentElement.parentElement);
+        //console.log(t.getAttribute("data-index"));
+        //$('#bootstrapTable').bootstrapTable('checkBy', index)
+    }
 
+    function deleteLine() {
+        alert(233333)
     }
 </script>
 </body>

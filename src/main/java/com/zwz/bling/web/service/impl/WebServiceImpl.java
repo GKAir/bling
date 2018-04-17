@@ -24,4 +24,14 @@ public class WebServiceImpl implements WebService {
         AccountExample example = new AccountExample();
         return mapper.selectByExample(example);
     }
+
+    @Override
+    public int edit(Account account) {
+        return mapper.updateByPrimaryKey(account);
+    }
+
+    @Override
+    public int add(Account account) {
+        return mapper.insert(account);
+    }
 }

@@ -12,4 +12,8 @@ public interface WebService {
 
     List<Account> selectAll();
 
+    int edit(Account account);
+
+    int add(Account account);
+
 }

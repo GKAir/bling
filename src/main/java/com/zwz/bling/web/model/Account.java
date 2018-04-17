@@ -37,7 +37,7 @@ public class Account {
 
     private String remark;
 
-    private Date regTime;
+    private String regTime;
 
     private String state;
 
@@ -179,11 +179,11 @@ public class Account {
         this.remark = remark == null ? null : remark.trim();
     }
 
-    public Date getRegTime() {
+    public String getRegTime() {
         return regTime;
     }
 
-    public void setRegTime(Date regTime) {
+    public void setRegTime(String regTime) {
         this.regTime = regTime;
     }
 
