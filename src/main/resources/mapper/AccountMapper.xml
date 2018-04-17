@@ -1,0 +1,445 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zwz.bling.web.dao.AccountMapper" >
+  <resultMap id="BaseResultMap" type="com.zwz.bling.web.model.Account" >
+    <id column="Id" property="id" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="app" property="app" jdbcType="CHAR" />
+    <result column="url" property="url" jdbcType="VARCHAR" />
+    <result column="account" property="account" jdbcType="VARCHAR" />
+    <result column="uname" property="uname" jdbcType="VARCHAR" />
+    <result column="upwd" property="upwd" jdbcType="VARCHAR" />
+    <result column="email" property="email" jdbcType="VARCHAR" />
+    <result column="fzemail" property="fzemail" jdbcType="VARCHAR" />
+    <result column="phone" property="phone" jdbcType="VARCHAR" />
+    <result column="type" property="type" jdbcType="INTEGER" />
+    <result column="qq" property="qq" jdbcType="CHAR" />
+    <result column="wechat" property="wechat" jdbcType="CHAR" />
+    <result column="weibo" property="weibo" jdbcType="CHAR" />
+    <result column="renren" property="renren" jdbcType="CHAR" />
+    <result column="idcard" property="idcard" jdbcType="CHAR" />
+    <result column="remark" property="remark" jdbcType="VARCHAR" />
+    <result column="reg_time" property="regTime" jdbcType="TIMESTAMP" />
+    <result column="state" property="state" jdbcType="CHAR" />
+    <result column="need" property="need" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    Id, name, app, url, account, uname, upwd, email, fzemail, phone, type, qq, wechat, 
+    weibo, renren, idcard, remark, reg_time, state, need
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.zwz.bling.web.model.AccountExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from wh_account
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from wh_account
+    where Id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from wh_account
+    where Id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.zwz.bling.web.model.AccountExample" >
+    delete from wh_account
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.zwz.bling.web.model.Account" >
+    insert into wh_account (Id, name, app, url, 
+      account, uname, upwd, 
+      email, fzemail, phone, 
+      type, qq, wechat, weibo, 
+      renren, idcard, remark, reg_time, 
+      state, need)
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{app,jdbcType=CHAR}, #{url,jdbcType=VARCHAR}, 
+      #{account,jdbcType=VARCHAR}, #{uname,jdbcType=VARCHAR}, #{upwd,jdbcType=VARCHAR}, 
+      #{email,jdbcType=VARCHAR}, #{fzemail,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR}, 
+      #{type,jdbcType=INTEGER}, #{qq,jdbcType=CHAR}, #{wechat,jdbcType=CHAR}, #{weibo,jdbcType=CHAR}, 
+      #{renren,jdbcType=CHAR}, #{idcard,jdbcType=CHAR}, #{remark,jdbcType=VARCHAR}, #{regTime,jdbcType=TIMESTAMP}, 
+      #{state,jdbcType=CHAR}, #{need,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.zwz.bling.web.model.Account" >
+    insert into wh_account
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        Id,
+      </if>
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="app != null" >
+        app,
+      </if>
+      <if test="url != null" >
+        url,
+      </if>
+      <if test="account != null" >
+        account,
+      </if>
+      <if test="uname != null" >
+        uname,
+      </if>
+      <if test="upwd != null" >
+        upwd,
+      </if>
+      <if test="email != null" >
+        email,
+      </if>
+      <if test="fzemail != null" >
+        fzemail,
+      </if>
+      <if test="phone != null" >
+        phone,
+      </if>
+      <if test="type != null" >
+        type,
+      </if>
+      <if test="qq != null" >
+        qq,
+      </if>
+      <if test="wechat != null" >
+        wechat,
+      </if>
+      <if test="weibo != null" >
+        weibo,
+      </if>
+      <if test="renren != null" >
+        renren,
+      </if>
+      <if test="idcard != null" >
+        idcard,
+      </if>
+      <if test="remark != null" >
+        remark,
+      </if>
+      <if test="regTime != null" >
+        reg_time,
+      </if>
+      <if test="state != null" >
+        state,
+      </if>
+      <if test="need != null" >
+        need,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="app != null" >
+        #{app,jdbcType=CHAR},
+      </if>
+      <if test="url != null" >
+        #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="account != null" >
+        #{account,jdbcType=VARCHAR},
+      </if>
+      <if test="uname != null" >
+        #{uname,jdbcType=VARCHAR},
+      </if>
+      <if test="upwd != null" >
+        #{upwd,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="fzemail != null" >
+        #{fzemail,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        #{type,jdbcType=INTEGER},
+      </if>
+      <if test="qq != null" >
+        #{qq,jdbcType=CHAR},
+      </if>
+      <if test="wechat != null" >
+        #{wechat,jdbcType=CHAR},
+      </if>
+      <if test="weibo != null" >
+        #{weibo,jdbcType=CHAR},
+      </if>
+      <if test="renren != null" >
+        #{renren,jdbcType=CHAR},
+      </if>
+      <if test="idcard != null" >
+        #{idcard,jdbcType=CHAR},
+      </if>
+      <if test="remark != null" >
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="regTime != null" >
+        #{regTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="state != null" >
+        #{state,jdbcType=CHAR},
+      </if>
+      <if test="need != null" >
+        #{need,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.zwz.bling.web.model.AccountExample" resultType="java.lang.Integer" >
+    select count(*) from wh_account
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update wh_account
+    <set >
+      <if test="record.id != null" >
+        Id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.name != null" >
+        name = #{record.name,jdbcType=VARCHAR},
+      </if>
+      <if test="record.app != null" >
+        app = #{record.app,jdbcType=CHAR},
+      </if>
+      <if test="record.url != null" >
+        url = #{record.url,jdbcType=VARCHAR},
+      </if>
+      <if test="record.account != null" >
+        account = #{record.account,jdbcType=VARCHAR},
+      </if>
+      <if test="record.uname != null" >
+        uname = #{record.uname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.upwd != null" >
+        upwd = #{record.upwd,jdbcType=VARCHAR},
+      </if>
+      <if test="record.email != null" >
+        email = #{record.email,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fzemail != null" >
+        fzemail = #{record.fzemail,jdbcType=VARCHAR},
+      </if>
+      <if test="record.phone != null" >
+        phone = #{record.phone,jdbcType=VARCHAR},
+      </if>
+      <if test="record.type != null" >
+        type = #{record.type,jdbcType=INTEGER},
+      </if>
+      <if test="record.qq != null" >
+        qq = #{record.qq,jdbcType=CHAR},
+      </if>
+      <if test="record.wechat != null" >
+        wechat = #{record.wechat,jdbcType=CHAR},
+      </if>
+      <if test="record.weibo != null" >
+        weibo = #{record.weibo,jdbcType=CHAR},
+      </if>
+      <if test="record.renren != null" >
+        renren = #{record.renren,jdbcType=CHAR},
+      </if>
+      <if test="record.idcard != null" >
+        idcard = #{record.idcard,jdbcType=CHAR},
+      </if>
+      <if test="record.remark != null" >
+        remark = #{record.remark,jdbcType=VARCHAR},
+      </if>
+      <if test="record.regTime != null" >
+        reg_time = #{record.regTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.state != null" >
+        state = #{record.state,jdbcType=CHAR},
+      </if>
+      <if test="record.need != null" >
+        need = #{record.need,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update wh_account
+    set Id = #{record.id,jdbcType=INTEGER},
+      name = #{record.name,jdbcType=VARCHAR},
+      app = #{record.app,jdbcType=CHAR},
+      url = #{record.url,jdbcType=VARCHAR},
+      account = #{record.account,jdbcType=VARCHAR},
+      uname = #{record.uname,jdbcType=VARCHAR},
+      upwd = #{record.upwd,jdbcType=VARCHAR},
+      email = #{record.email,jdbcType=VARCHAR},
+      fzemail = #{record.fzemail,jdbcType=VARCHAR},
+      phone = #{record.phone,jdbcType=VARCHAR},
+      type = #{record.type,jdbcType=INTEGER},
+      qq = #{record.qq,jdbcType=CHAR},
+      wechat = #{record.wechat,jdbcType=CHAR},
+      weibo = #{record.weibo,jdbcType=CHAR},
+      renren = #{record.renren,jdbcType=CHAR},
+      idcard = #{record.idcard,jdbcType=CHAR},
+      remark = #{record.remark,jdbcType=VARCHAR},
+      reg_time = #{record.regTime,jdbcType=TIMESTAMP},
+      state = #{record.state,jdbcType=CHAR},
+      need = #{record.need,jdbcType=VARCHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.zwz.bling.web.model.Account" >
+    update wh_account
+    <set >
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="app != null" >
+        app = #{app,jdbcType=CHAR},
+      </if>
+      <if test="url != null" >
+        url = #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="account != null" >
+        account = #{account,jdbcType=VARCHAR},
+      </if>
+      <if test="uname != null" >
+        uname = #{uname,jdbcType=VARCHAR},
+      </if>
+      <if test="upwd != null" >
+        upwd = #{upwd,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null" >
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="fzemail != null" >
+        fzemail = #{fzemail,jdbcType=VARCHAR},
+      </if>
+      <if test="phone != null" >
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=INTEGER},
+      </if>
+      <if test="qq != null" >
+        qq = #{qq,jdbcType=CHAR},
+      </if>
+      <if test="wechat != null" >
+        wechat = #{wechat,jdbcType=CHAR},
+      </if>
+      <if test="weibo != null" >
+        weibo = #{weibo,jdbcType=CHAR},
+      </if>
+      <if test="renren != null" >
+        renren = #{renren,jdbcType=CHAR},
+      </if>
+      <if test="idcard != null" >
+        idcard = #{idcard,jdbcType=CHAR},
+      </if>
+      <if test="remark != null" >
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="regTime != null" >
+        reg_time = #{regTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="state != null" >
+        state = #{state,jdbcType=CHAR},
+      </if>
+      <if test="need != null" >
+        need = #{need,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where Id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.zwz.bling.web.model.Account" >
+    update wh_account
+    set name = #{name,jdbcType=VARCHAR},
+      app = #{app,jdbcType=CHAR},
+      url = #{url,jdbcType=VARCHAR},
+      account = #{account,jdbcType=VARCHAR},
+      uname = #{uname,jdbcType=VARCHAR},
+      upwd = #{upwd,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      fzemail = #{fzemail,jdbcType=VARCHAR},
+      phone = #{phone,jdbcType=VARCHAR},
+      type = #{type,jdbcType=INTEGER},
+      qq = #{qq,jdbcType=CHAR},
+      wechat = #{wechat,jdbcType=CHAR},
+      weibo = #{weibo,jdbcType=CHAR},
+      renren = #{renren,jdbcType=CHAR},
+      idcard = #{idcard,jdbcType=CHAR},
+      remark = #{remark,jdbcType=VARCHAR},
+      reg_time = #{regTime,jdbcType=TIMESTAMP},
+      state = #{state,jdbcType=CHAR},
+      need = #{need,jdbcType=VARCHAR}
+    where Id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

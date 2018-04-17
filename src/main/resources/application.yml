@@ -1,0 +1,22 @@
+server:
+  port: 8088
+  tomcat:
+    uri-encoding: UTF-8
+  servlet:
+    context-path: /
+spring:
+ # mvc:
+ #   view:
+ #     prefix: /
+ #     suffix: html
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://192.168.0.104:3306/bling
+    username: root
+    password: root
+  thymeleaf:
+    mode: HTML5
+    cache: false
+mybatis:
+  mapperLocations: classpath*:mapper/*.xml
+  typeAliasesPackage: com.zwz.bling.web.model
